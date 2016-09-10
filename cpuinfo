@@ -1,0 +1,9 @@
+Utilizando o comando 'lscpu' você tem acesso a informações sobre a CPU.
+Neste exemplo eu utilizei uma regex para extrair as informações na saida do comando 'lscpu' 
+e criar funções com o nome das informações, onde cada função possui seu respectivo valor.
+
+$ eval $(lscpu | sed -n 's/\( \)\{1,\}/ /g;s/: /=/g;s/=\(.*\)/={echo "\1";};/p' | sed -n 's/ /_/g;s/(//g;s/)//g;s/-//g;s/\(^.*\)=/cpu.\1()/p' | sed 's/echo_/ echo /g')
+
+Após executar a linha de comando, basta digitar no terminal o prefixo:
+$ cpu. e pressionar a tecla [TAB] para exibir as funções criadas.
+by. SHAMAN
